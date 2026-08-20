@@ -1,0 +1,76 @@
+[
+  {
+    "dataset": "rsna",
+    "task": "detection",
+    "image_id": "00436515-870c-4b36-a041-de91049b9ab4",
+    "image_file": "00436515-870c-4b36-a041-de91049b9ab4.png",
+    "modality": "Chest X-ray",
+    "body_part": "Lung",
+    "disease": "Pneumonia",
+    "detailed_class": "Lung Opacity",
+    "bounding_boxes": [
+      {
+        "x": 264.0,
+        "y": 152.0,
+        "width": 213.0,
+        "height": 379.0
+      },
+      {
+        "x": 562.0,
+        "y": 152.0,
+        "width": 256.0,
+        "height": 453.0
+      }
+    ],
+    "image_size": [
+      1024,
+      1024
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "rsna",
+    "task": "detection",
+    "image_id": "00704310-78a8-4b38-8475-49f4573b2dbb",
+    "image_file": "00704310-78a8-4b38-8475-49f4573b2dbb.png",
+    "modality": "Chest X-ray",
+    "body_part": "Lung",
+    "disease": "Pneumonia",
+    "detailed_class": "Lung Opacity",
+    "bounding_boxes": [
+      {
+        "x": 323.0,
+        "y": 577.0,
+        "width": 160.0,
+        "height": 104.0
+      },
+      {
+        "x": 695.0,
+        "y": 575.0,
+        "width": 162.0,
+        "height": 137.0
+      }
+    ],
+    "image_size": [
+      1024,
+      1024
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "rsna",
+    "task": "detection",
+    "image_id": "0004cfab-14fd-4e49-80ba-63a80b6bddd6",
+    "image_file": "0004cfab-14fd-4e49-80ba-63a80b6bddd6.png",
+    "modality": "Chest X-ray",
+    "body_part": "Lung",
+    "disease": "None",
+    "detailed_class": "No Lung Opacity / Not Normal",
+    "bounding_boxes": [],
+    "image_size": [
+      1024,
+      1024
+    ],
+    "annotation_type": "bounding_box"
+  }
+]

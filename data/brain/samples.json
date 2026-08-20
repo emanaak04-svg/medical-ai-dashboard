@@ -1,0 +1,486 @@
+[
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "gg__640_",
+    "image_file": "gg__640_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Glioma",
+    "detailed_class": "Glioma",
+    "bounding_boxes": [
+      {
+        "x": 135.000064,
+        "y": 132.999936,
+        "width": 76.000256,
+        "height": 79.000064
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "gg__731_",
+    "image_file": "gg__731_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Glioma",
+    "detailed_class": "Glioma",
+    "bounding_boxes": [
+      {
+        "x": 223.000064,
+        "y": 186.999808,
+        "width": 56.999936,
+        "height": 56.999936
+      },
+      {
+        "x": 269.000192,
+        "y": 210.99980799999997,
+        "width": 49.999872,
+        "height": 94.000128
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "Tr-gl_0965",
+    "image_file": "Tr-gl_0965.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Glioma",
+    "detailed_class": "Glioma",
+    "bounding_boxes": [
+      {
+        "x": 179.99974400000002,
+        "y": 208.0,
+        "width": 101.000192,
+        "height": 55.000064
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "gg__443_",
+    "image_file": "gg__443_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Glioma",
+    "detailed_class": "Glioma",
+    "bounding_boxes": [
+      {
+        "x": 216.0,
+        "y": 146.999808,
+        "width": 16.0,
+        "height": 24.999936
+      },
+      {
+        "x": 172.999936,
+        "y": 170.000128,
+        "width": 31.000064,
+        "height": 38.000128
+      },
+      {
+        "x": 232.999936,
+        "y": 189.99987199999998,
+        "width": 39.000064,
+        "height": 29.000192
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "gg__304_",
+    "image_file": "gg__304_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Glioma",
+    "detailed_class": "Glioma",
+    "bounding_boxes": [
+      {
+        "x": 119.000064,
+        "y": 236.00025600000004,
+        "width": 106.999808,
+        "height": 81.999872
+      },
+      {
+        "x": 242.000128,
+        "y": 304.999936,
+        "width": 47.000064,
+        "height": 33.999872
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "Tr-me_0682",
+    "image_file": "Tr-me_0682.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Meningioma",
+    "detailed_class": "Meningioma",
+    "bounding_boxes": [
+      {
+        "x": 232.0,
+        "y": 276.99968,
+        "width": 69.000192,
+        "height": 94.000128
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "m3__84_",
+    "image_file": "m3__84_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Meningioma",
+    "detailed_class": "Meningioma",
+    "bounding_boxes": [
+      {
+        "x": 301.00019199999997,
+        "y": 116.0,
+        "width": 74.999808,
+        "height": 72.0
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "m__148_",
+    "image_file": "m__148_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Meningioma",
+    "detailed_class": "Meningioma",
+    "bounding_boxes": [
+      {
+        "x": 264.999936,
+        "y": 149.00019199999997,
+        "width": 133.000192,
+        "height": 129.999872
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "m3__247_",
+    "image_file": "m3__247_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Meningioma",
+    "detailed_class": "Meningioma",
+    "bounding_boxes": [
+      {
+        "x": 151.000064,
+        "y": 147.00032000000002,
+        "width": 28.000256,
+        "height": 17.999872
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "Tr-me_1061",
+    "image_file": "Tr-me_1061.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Meningioma",
+    "detailed_class": "Meningioma",
+    "bounding_boxes": [
+      {
+        "x": 288.0,
+        "y": 184.99967999999998,
+        "width": 64.0,
+        "height": 54.000128
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "Tr-no_1296",
+    "image_file": "Tr-no_1296.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "None",
+    "detailed_class": "No Tumor",
+    "bounding_boxes": [
+      {
+        "x": 34.00008750000001,
+        "y": 15.00007500000001,
+        "width": 155.000025,
+        "height": 202.00005
+      }
+    ],
+    "image_size": [
+      225,
+      225
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "Tr-no_0957",
+    "image_file": "Tr-no_0957.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "None",
+    "detailed_class": "No Tumor",
+    "bounding_boxes": [
+      {
+        "x": 101.99999999999997,
+        "y": 70.99981999999994,
+        "width": 462.00016,
+        "height": 603.0002000000001
+      }
+    ],
+    "image_size": [
+      680,
+      680
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "image_277_",
+    "image_file": "image_277_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "None",
+    "detailed_class": "No Tumor",
+    "bounding_boxes": [
+      {
+        "x": 17.9998875,
+        "y": 24.999975000000006,
+        "width": 191.000025,
+        "height": 144.9999
+      }
+    ],
+    "image_size": [
+      225,
+      225
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "image_126_",
+    "image_file": "image_126_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "None",
+    "detailed_class": "No Tumor",
+    "bounding_boxes": [
+      {
+        "x": 60.0,
+        "y": 48.99967799999996,
+        "width": 882.0,
+        "height": 614.0000160000001
+      }
+    ],
+    "image_size": [
+      1000,
+      714
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "image__20_",
+    "image_file": "image__20_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "None",
+    "detailed_class": "No Tumor",
+    "bounding_boxes": [
+      {
+        "x": 6.000069999999994,
+        "y": 9.999808000000002,
+        "width": 314.99994000000004,
+        "height": 405.00018
+      }
+    ],
+    "image_size": [
+      332,
+      442
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "p__619_",
+    "image_file": "p__619_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Pituitary",
+    "detailed_class": "Pituitary",
+    "bounding_boxes": [
+      {
+        "x": 234.000128,
+        "y": 183.000064,
+        "width": 38.000128,
+        "height": 44.000256
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "p__66_",
+    "image_file": "p__66_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Pituitary",
+    "detailed_class": "Pituitary",
+    "bounding_boxes": [
+      {
+        "x": 228.0,
+        "y": 297.000192,
+        "width": 72.0,
+        "height": 63.000064
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "Tr-pi_0100",
+    "image_file": "Tr-pi_0100.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Pituitary",
+    "detailed_class": "Pituitary",
+    "bounding_boxes": [
+      {
+        "x": 222.999808,
+        "y": 199.000064,
+        "width": 47.000064,
+        "height": 48.0
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "Tr-pi_0918",
+    "image_file": "Tr-pi_0918.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Pituitary",
+    "detailed_class": "Pituitary",
+    "bounding_boxes": [
+      {
+        "x": 225.99987199999998,
+        "y": 184.000256,
+        "width": 53.000192,
+        "height": 48.999936
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  },
+  {
+    "dataset": "brain_mri",
+    "task": "detection",
+    "image_id": "p__433_",
+    "image_file": "p__433_.jpg",
+    "modality": "MRI",
+    "body_part": "Brain",
+    "disease": "Pituitary",
+    "detailed_class": "Pituitary",
+    "bounding_boxes": [
+      {
+        "x": 163.99974400000002,
+        "y": 249.000192,
+        "width": 60.000256,
+        "height": 79.000064
+      }
+    ],
+    "image_size": [
+      512,
+      512
+    ],
+    "annotation_type": "bounding_box"
+  }
+]
