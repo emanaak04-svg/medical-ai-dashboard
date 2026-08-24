@@ -3,6 +3,7 @@
 import { useState } from "react";
 import rsnaData from "@/data/rsna/samples.json";
 import brainData from "@/data/brain/samples.json";
+import BodyModel from "@/components/BodyModel";
 
 type BoundingBox = { x: number; y: number; width: number; height: number };
 type Sample = {
@@ -37,6 +38,7 @@ export default function Home() {
 
   const dataset = DATASETS[datasetKey];
   const sample = dataset.samples[selectedIndex];
+  const activeRegion = datasetKey === "brain" ? "brain" : datasetKey === "rsna" ? "lungs" : null;
 
   const displayWidth = 400;
   const scale = displayWidth / sample.image_size[0];
@@ -147,6 +149,10 @@ export default function Home() {
             <option key={key} value={key}>{d.label}</option>
           ))}
         </select>
+
+        <div className="mb-4">
+         <BodyModel activeRegion={activeRegion} />
+        </div>
 
         {/* Chat — now wired to /api/chat */}
         <div className="flex-1 rounded border border-gray-800 bg-gray-950 p-3 text-sm overflow-y-auto space-y-2">
