@@ -20,7 +20,12 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.338,
+      "cy": 0.337,
+      "r": 0.08
+    }
   },
   {
     "dataset": "brain_mri",
@@ -49,7 +54,12 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.529,
+      "cy": 0.48,
+      "r": 0.115
+    }
   },
   {
     "dataset": "brain_mri",
@@ -63,7 +73,7 @@
     "bounding_boxes": [
       {
         "x": 179.99974400000002,
-        "y": 208.0,
+        "y": 208,
         "width": 101.000192,
         "height": 55.000064
       }
@@ -72,7 +82,12 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.45,
+      "cy": 0.46,
+      "r": 0.099
+    }
   },
   {
     "dataset": "brain_mri",
@@ -85,9 +100,9 @@
     "detailed_class": "Glioma",
     "bounding_boxes": [
       {
-        "x": 216.0,
+        "x": 216,
         "y": 146.999808,
-        "width": 16.0,
+        "width": 16,
         "height": 24.999936
       },
       {
@@ -107,7 +122,12 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.435,
+      "cy": 0.357,
+      "r": 0.097
+    }
   },
   {
     "dataset": "brain_mri",
@@ -136,7 +156,12 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.398,
+      "cy": 0.562,
+      "r": 0.166
+    }
   },
   {
     "dataset": "brain_mri",
@@ -149,7 +174,7 @@
     "detailed_class": "Meningioma",
     "bounding_boxes": [
       {
-        "x": 232.0,
+        "x": 232,
         "y": 276.99968,
         "width": 69.000192,
         "height": 94.000128
@@ -159,7 +184,12 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.521,
+      "cy": 0.633,
+      "r": 0.092
+    }
   },
   {
     "dataset": "brain_mri",
@@ -173,16 +203,21 @@
     "bounding_boxes": [
       {
         "x": 301.00019199999997,
-        "y": 116.0,
+        "y": 116,
         "width": 74.999808,
-        "height": 72.0
+        "height": 72
       }
     ],
     "image_size": [
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.661,
+      "cy": 0.297,
+      "r": 0.08
+    }
   },
   {
     "dataset": "brain_mri",
@@ -205,7 +240,12 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.647,
+      "cy": 0.418,
+      "r": 0.13
+    }
   },
   {
     "dataset": "brain_mri",
@@ -228,7 +268,12 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.322,
+      "cy": 0.305,
+      "r": 0.08
+    }
   },
   {
     "dataset": "brain_mri",
@@ -241,9 +286,9 @@
     "detailed_class": "Meningioma",
     "bounding_boxes": [
       {
-        "x": 288.0,
+        "x": 288,
         "y": 184.99967999999998,
-        "width": 64.0,
+        "width": 64,
         "height": 54.000128
       }
     ],
@@ -251,7 +296,12 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.625,
+      "cy": 0.414,
+      "r": 0.08
+    }
   },
   {
     "dataset": "brain_mri",
@@ -274,7 +324,12 @@
       225,
       225
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.496,
+      "cy": 0.516,
+      "r": 0.35
+    }
   },
   {
     "dataset": "brain_mri",
@@ -297,7 +352,12 @@
       680,
       680
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.49,
+      "cy": 0.548,
+      "r": 0.35
+    }
   },
   {
     "dataset": "brain_mri",
@@ -320,7 +380,12 @@
       225,
       225
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.504,
+      "cy": 0.433,
+      "r": 0.35
+    }
   },
   {
     "dataset": "brain_mri",
@@ -333,9 +398,9 @@
     "detailed_class": "No Tumor",
     "bounding_boxes": [
       {
-        "x": 60.0,
+        "x": 60,
         "y": 48.99967799999996,
-        "width": 882.0,
+        "width": 882,
         "height": 614.0000160000001
       }
     ],
@@ -343,7 +408,12 @@
       1000,
       714
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.501,
+      "cy": 0.499,
+      "r": 0.35
+    }
   },
   {
     "dataset": "brain_mri",
@@ -366,7 +436,12 @@
       332,
       442
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.492,
+      "cy": 0.481,
+      "r": 0.35
+    }
   },
   {
     "dataset": "brain_mri",
@@ -389,7 +464,12 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.494,
+      "cy": 0.4,
+      "r": 0.08
+    }
   },
   {
     "dataset": "brain_mri",
@@ -402,9 +482,9 @@
     "detailed_class": "Pituitary",
     "bounding_boxes": [
       {
-        "x": 228.0,
+        "x": 228,
         "y": 297.000192,
-        "width": 72.0,
+        "width": 72,
         "height": 63.000064
       }
     ],
@@ -412,7 +492,12 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.516,
+      "cy": 0.642,
+      "r": 0.08
+    }
   },
   {
     "dataset": "brain_mri",
@@ -428,14 +513,19 @@
         "x": 222.999808,
         "y": 199.000064,
         "width": 47.000064,
-        "height": 48.0
+        "height": 48
       }
     ],
     "image_size": [
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.481,
+      "cy": 0.436,
+      "r": 0.08
+    }
   },
   {
     "dataset": "brain_mri",
@@ -458,7 +548,12 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.493,
+      "cy": 0.407,
+      "r": 0.08
+    }
   },
   {
     "dataset": "brain_mri",
@@ -481,6 +576,11 @@
       512,
       512
     ],
-    "annotation_type": "bounding_box"
+    "annotation_type": "bounding_box",
+    "heatmap": {
+      "cx": 0.379,
+      "cy": 0.563,
+      "r": 0.08
+    }
   }
 ]
