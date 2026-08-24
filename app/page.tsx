@@ -22,13 +22,37 @@ type Sample = {
 
 type ChatMsg = { role: "user" | "assistant"; text: string };
 
-const DATASETS: Record<string, { label: string; samples: Sample[]; imagePath: string }> = {
-  rsna: { label: "RSNA Pneumonia", samples: rsnaData as Sample[], imagePath: "/samples/rsna" },
-  brain: { label: "Brain Tumor MRI", samples: brainData as Sample[], imagePath: "/samples/brain" },
+type DatasetConfig = {
+  label: string;
+  samples: Sample[];
+  imagePath: string;
+  bodyRegion: "brain" | "lungs";
+  task: string;
+};
+
+type Action = {
+  dataset: string;
+  task: string | null;
+  bodyRegion: "brain" | "lungs" | null;
+  visualizations: { bbox: boolean; heatmap: boolean; threeD: boolean };
+  reply: string;
+};
+
+const DATASETS: Record<string, DatasetConfig> = {
+  rsna: { label: "RSNA Pneumonia", samples: rsnaData as Sample[], imagePath: "/samples/rsna", bodyRegion: "lungs", task: "detection" },
+  brain: { label: "Brain Tumor MRI", samples: brainData as Sample[], imagePath: "/samples/brain", bodyRegion: "brain", task: "classification" },
+};
+
+const defaultAction: Action = {
+  dataset: "rsna",
+  task: DATASETS.rsna.task,
+  bodyRegion: DATASETS.rsna.bodyRegion,
+  visualizations: { bbox: true, heatmap: false, threeD: true },
+  reply: "Showing RSNA Pneumonia.",
 };
 
 export default function Home() {
-  const [datasetKey, setDatasetKey] = useState("rsna");
+  const [action, setAction] = useState<Action>(defaultAction);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [messages, setMessages] = useState<ChatMsg[]>([
     { role: "assistant", text: "Ask me to show a dataset — e.g. \"show me brain tumor cases\"." },
@@ -36,12 +60,23 @@ export default function Home() {
   const [draft, setDraft] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const dataset = DATASETS[datasetKey];
+  const dataset = DATASETS[action.dataset];
   const sample = dataset.samples[selectedIndex];
-  const activeRegion = datasetKey === "brain" ? "brain" : datasetKey === "rsna" ? "lungs" : null;
 
   const displayWidth = 400;
   const scale = displayWidth / sample.image_size[0];
+
+  const selectDatasetManually = (key: string) => {
+    const d = DATASETS[key];
+    setAction({
+      dataset: key,
+      task: d.task,
+      bodyRegion: d.bodyRegion,
+      visualizations: { bbox: true, heatmap: false, threeD: true },
+      reply: `Showing ${d.label}.`,
+    });
+    setSelectedIndex(0);
+  };
 
   const sendMessage = async () => {
     const text = draft.trim();
@@ -60,7 +95,7 @@ export default function Home() {
       const data = await res.json();
 
       if (data.dataset && DATASETS[data.dataset]) {
-        setDatasetKey(data.dataset);
+        setAction(data as Action);
         setSelectedIndex(0);
       }
 
@@ -91,18 +126,19 @@ export default function Home() {
               width={displayWidth}
               className="rounded"
             />
-            {sample.bounding_boxes.map((box, i) => (
-              <div
-                key={i}
-                className="absolute border-2 border-red-500"
-                style={{
-                  left: box.x * scale,
-                  top: box.y * scale,
-                  width: box.width * scale,
-                  height: box.height * scale,
-                }}
-              />
-            ))}
+            {action.visualizations.bbox &&
+              sample.bounding_boxes.map((box, i) => (
+                <div
+                  key={i}
+                  className="absolute border-2 border-red-500"
+                  style={{
+                    left: box.x * scale,
+                    top: box.y * scale,
+                    width: box.width * scale,
+                    height: box.height * scale,
+                  }}
+                />
+              ))}
           </div>
 
           <div className="flex gap-2 mt-3 overflow-x-auto">
@@ -120,12 +156,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* JSON panel */}
+        {/* JSON panel — the actual structured action from Gemini, not the raw sample */}
         <section className="rounded-lg border border-gray-800 bg-gray-900 p-4">
           <h2 className="text-xs uppercase tracking-wide text-gray-400 mb-2">
-            Generated JSON
+            Generated Action (from Gemini)
           </h2>
-          <pre className="text-xs text-teal-400 bg-black/40 rounded p-3 overflow-auto max-h-64">
+          <pre className="text-xs text-teal-400 bg-black/40 rounded p-3 overflow-auto max-h-48">
+            {JSON.stringify(action, null, 2)}
+          </pre>
+        </section>
+
+        {/* Selected image's own dataset record, separate from the LLM action */}
+        <section className="rounded-lg border border-gray-800 bg-gray-900 p-4">
+          <h2 className="text-xs uppercase tracking-wide text-gray-400 mb-2">
+            Selected Image Record
+          </h2>
+          <pre className="text-xs text-gray-400 bg-black/40 rounded p-3 overflow-auto max-h-48">
             {JSON.stringify(sample, null, 2)}
           </pre>
         </section>
@@ -138,11 +184,8 @@ export default function Home() {
         </h2>
 
         <select
-          value={datasetKey}
-          onChange={(e) => {
-            setDatasetKey(e.target.value);
-            setSelectedIndex(0);
-          }}
+          value={action.dataset}
+          onChange={(e) => selectDatasetManually(e.target.value)}
           className="mb-4 rounded bg-gray-800 border border-gray-700 p-2 text-sm"
         >
           {Object.entries(DATASETS).map(([key, d]) => (
@@ -151,7 +194,7 @@ export default function Home() {
         </select>
 
         <div className="mb-4">
-         <BodyModel activeRegion={activeRegion} />
+          <BodyModel activeRegion={action.visualizations.threeD ? action.bodyRegion : null} />
         </div>
 
         {/* Chat — now wired to /api/chat */}
