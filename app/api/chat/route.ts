@@ -35,11 +35,58 @@ const DATASETS: DatasetConfig[] = [
       "skin lesions",
       "ham10000",
       "melanoma",
-      "lesion",
+      "nevus",
+      "mole",
+      "basal cell carcinoma",
+      "bcc",
+      "benign keratosis",
+      "actinic keratosis",
+      "vascular lesion",
+      "dermatofibroma",
       "dermatology",
     ],
   },
 ];
+
+function getSkinFilter(message: string) {
+  const lower = message.toLowerCase();
+
+  if (lower.includes("melanoma")) {
+    return { field: "dx", value: "mel" };
+  }
+
+  if (lower.includes("nevus") || lower.includes("mole")) {
+    return { field: "dx", value: "nv" };
+  }
+
+  if (
+    lower.includes("basal cell carcinoma") ||
+    lower.includes("bcc")
+  ) {
+    return { field: "dx", value: "bcc" };
+  }
+
+  if (
+    lower.includes("benign keratosis") ||
+    lower.includes("seborrheic keratosis")
+  ) {
+    return { field: "dx", value: "bkl" };
+  }
+
+  if (lower.includes("actinic keratosis")) {
+    return { field: "dx", value: "akiec" };
+  }
+
+  if (lower.includes("vascular lesion")) {
+    return { field: "dx", value: "vasc" };
+  }
+
+  if (lower.includes("dermatofibroma")) {
+    return { field: "dx", value: "df" };
+  }
+
+  return null;
+}
 
 function fallbackAction(message: string) {
   const lower = message.toLowerCase();
@@ -53,25 +100,35 @@ function fallbackAction(message: string) {
       dataset: null,
       task: null,
       bodyRegion: null,
+      filter: null,
       visualizations: {
         bbox: false,
         heatmap: false,
         threeD: false,
       },
-      reply: "Tell me which dataset — RSNA, Brain Tumor MRI, or HAM10000.",
+      reply:
+        "Tell me which dataset — RSNA, Brain Tumor MRI, or HAM10000.",
     };
   }
+
+  const filter =
+    match.key === "ham10000"
+      ? getSkinFilter(message)
+      : null;
 
   return {
     dataset: match.key,
     task: match.task,
     bodyRegion: match.bodyRegion,
+    filter,
     visualizations: {
       bbox: match.key !== "ham10000",
-      heatmap: lower.includes("heatmap"),
+      heatmap: false,
       threeD: match.key !== "ham10000",
     },
-    reply: `Showing ${match.label}.`,
+    reply: filter
+      ? `Showing ${match.label} filtered results.`
+      : `Showing ${match.label}.`,
   };
 }
 
@@ -94,25 +151,32 @@ export async function POST(req: NextRequest) {
   try {
     const ai = new GoogleGenAI({ apiKey });
 
-    const lower = message.toLowerCase();
-    const wantsHeatmap = lower.includes("heatmap");
-
-    const prompt = `Choose one dataset based on the user message.
+    const prompt = `You route a medical dataset dashboard.
 
 Datasets:
 - rsna = chest X-ray, pneumonia, lungs
 - brain = brain tumor MRI
 - ham10000 = skin lesion images
 
-Return ONLY JSON:
-{"dataset":"rsna" or "brain" or "ham10000" or null,"task":"detection" or "classification" or null,"bodyRegion":"lungs" or "brain" or null,"visualizations":{"bbox":true or false,"heatmap":true or false,"threeD":true or false},"reply":"short sentence"}
+HAM10000 filters:
+- melanoma = mel
+- nevus or mole = nv
+- basal cell carcinoma or BCC = bcc
+- benign keratosis = bkl
+- actinic keratosis = akiec
+- vascular lesion = vasc
+- dermatofibroma = df
 
-Rules:
-- HAM10000: bbox=false, threeD=false
-- Heatmap=true only if the user explicitly asks for "heatmap"
-- Otherwise heatmap=false
+If the user asks for one of these skin conditions, return the matching filter.
 
-User message: "${message}"`;
+Respond ONLY with JSON:
+{"dataset":"rsna" or "brain" or "ham10000" or null,"task":"detection" or "classification" or null,"bodyRegion":"lungs" or "brain" or null,"filter":{"field":"dx","value":"mel|nv|bcc|bkl|akiec|vasc|df"} or null,"visualizations":{"bbox":true or false,"heatmap":true or false,"threeD":true or false},"reply":"short sentence"}
+
+For HAM10000:
+bbox=false
+threeD=false
+
+User: "${message}"`;
 
     const result = await ai.models.generateContent({
       model: "gemini-2.5-flash",
@@ -123,16 +187,7 @@ User message: "${message}"`;
       .trim()
       .replace(/^```json\s*|```\s*$/g, "");
 
-    const parsed = JSON.parse(text);
-
-    parsed.visualizations.heatmap = wantsHeatmap;
-
-    if (parsed.dataset === "ham10000") {
-      parsed.visualizations.bbox = false;
-      parsed.visualizations.threeD = false;
-    }
-
-    return NextResponse.json(parsed);
+    return NextResponse.json(JSON.parse(text));
   } catch (err) {
     console.error("GEMINI ERROR:", err);
     return NextResponse.json(fallbackAction(message));
