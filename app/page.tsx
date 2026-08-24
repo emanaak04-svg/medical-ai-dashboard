@@ -14,18 +14,19 @@ type BoundingBox = {
 };
 
 type Sample = {
-  dataset: string;
-  task: string;
+  dataset?: string;
+  task?: string;
   image_id: string;
-  image_file: string;
-  modality: string;
-  body_part: string;
-  disease: string;
-  detailed_class: string;
-  bounding_boxes: BoundingBox[];
-  heatmap: { cx: number; cy: number; r: number } | null;
-  image_size: [number, number];
-  annotation_type: string;
+  image_file?: string;
+  image_path?: string;
+  modality?: string;
+  body_part?: string;
+  disease?: string;
+  detailed_class?: string;
+  bounding_boxes?: BoundingBox[];
+  heatmap?: { cx: number; cy: number; r: number } | null;
+  image_size?: [number, number];
+  annotation_type?: string;
   dx?: string;
   age?: number;
   sex?: string;
@@ -66,6 +67,7 @@ const DATASETS: Record<string, DatasetConfig> = {
     bodyRegion: "lungs",
     task: "detection",
   },
+
   brain: {
     label: "Brain Tumor MRI",
     samples: brainData as Sample[],
@@ -73,6 +75,7 @@ const DATASETS: Record<string, DatasetConfig> = {
     bodyRegion: "brain",
     task: "classification",
   },
+
   ham10000: {
     label: "HAM10000 Skin Lesions",
     samples: hamData as Sample[],

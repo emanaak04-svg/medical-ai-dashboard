@@ -122,10 +122,11 @@ function fallbackAction(message: string) {
     bodyRegion: match.bodyRegion,
     filter,
     visualizations: {
-      bbox: match.key !== "ham10000",
-      heatmap: false,
-      threeD: match.key !== "ham10000",
-    },
+  bbox: match.key !== "ham10000",
+  heatmap:
+    /\b(heatmap|heat map|attention map|attention)\b/i.test(message),
+  threeD: match.key !== "ham10000",
+},
     reply: filter
       ? `Showing ${match.label} filtered results.`
       : `Showing ${match.label}.`,
