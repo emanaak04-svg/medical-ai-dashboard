@@ -50,42 +50,57 @@ const DATASETS: DatasetConfig[] = [
 
 function getSkinFilter(message: string) {
   const lower = message.toLowerCase();
+  const filters = [];
 
   if (lower.includes("melanoma")) {
-    return { field: "dx", value: "mel" };
-  }
-
-  if (lower.includes("nevus") || lower.includes("mole")) {
-    return { field: "dx", value: "nv" };
-  }
-
-  if (
+    filters.push({ field: "dx", value: "mel" });
+  } else if (
+    lower.includes("nevus") ||
+    lower.includes("mole")
+  ) {
+    filters.push({ field: "dx", value: "nv" });
+  } else if (
     lower.includes("basal cell carcinoma") ||
     lower.includes("bcc")
   ) {
-    return { field: "dx", value: "bcc" };
-  }
-
-  if (
+    filters.push({ field: "dx", value: "bcc" });
+  } else if (
     lower.includes("benign keratosis") ||
     lower.includes("seborrheic keratosis")
   ) {
-    return { field: "dx", value: "bkl" };
+    filters.push({ field: "dx", value: "bkl" });
+  } else if (lower.includes("actinic keratosis")) {
+    filters.push({ field: "dx", value: "akiec" });
+  } else if (lower.includes("vascular lesion")) {
+    filters.push({ field: "dx", value: "vasc" });
+  } else if (lower.includes("dermatofibroma")) {
+    filters.push({ field: "dx", value: "df" });
   }
 
-  if (lower.includes("actinic keratosis")) {
-    return { field: "dx", value: "akiec" };
+  if (lower.includes("face")) {
+    filters.push({ field: "localization", value: "face" });
+  } else if (lower.includes("back")) {
+    filters.push({ field: "localization", value: "back" });
+  } else if (lower.includes("chest")) {
+    filters.push({ field: "localization", value: "chest" });
+  } else if (lower.includes("abdomen")) {
+    filters.push({ field: "localization", value: "abdomen" });
+  } else if (lower.includes("trunk")) {
+    filters.push({ field: "localization", value: "trunk" });
+  } else if (lower.includes("upper extremity")) {
+    filters.push({ field: "localization", value: "upper extremity" });
+  } else if (lower.includes("lower extremity")) {
+    filters.push({ field: "localization", value: "lower extremity" });
   }
 
-  if (lower.includes("vascular lesion")) {
-    return { field: "dx", value: "vasc" };
+  if (lower.includes("male")) {
+    filters.push({ field: "sex", value: "male" });
+  } else if (lower.includes("female")) {
+    filters.push({ field: "sex", value: "female" });
   }
 
-  if (lower.includes("dermatofibroma")) {
-    return { field: "dx", value: "df" };
-  }
+    return filters.length > 0 ? filters : null;
 
-  return null;
 }
 
 function fallbackAction(message: string) {
@@ -171,11 +186,13 @@ HAM10000 filters:
 If the user asks for one of these skin conditions, return the matching filter.
 
 Respond ONLY with JSON:
-{"dataset":"rsna" or "brain" or "ham10000" or null,"task":"detection" or "classification" or null,"bodyRegion":"lungs" or "brain" or null,"filter":{"field":"dx","value":"mel|nv|bcc|bkl|akiec|vasc|df"} or null,"visualizations":{"bbox":true or false,"heatmap":true or false,"threeD":true or false},"reply":"short sentence"}
+{"dataset":"rsna" or "brain" or "ham10000" or null,"task":"detection" or "classification" or null,"bodyRegion":"lungs" or "brain" or null,"filter":[{"field":"dx","value":"mel|nv|bcc|bkl|akiec|vasc|df"},{"field":"localization","value":"face|back|chest|abdomen|trunk|upper extremity|lower extremity"},{"field":"sex","value":"male|female"}] or null,"visualizations":{"bbox":true or false,"heatmap":true or false,"threeD":true or false},"reply":"short sentence"}
 
 For HAM10000:
 bbox=false
 threeD=false
+
+If the user asks for multiple skin filters, return all of them.
 
 User: "${message}"`;
 

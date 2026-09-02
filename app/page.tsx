@@ -50,7 +50,7 @@ type Action = {
   dataset: string;
   task: string | null;
   bodyRegion: "brain" | "lungs" | null;
-  filter?: { field: string; value: string } | null;
+  filter?: { field: string; value: string }[] | null;
   visualizations: {
     bbox: boolean;
     heatmap: boolean;
@@ -114,9 +114,16 @@ export default function Home() {
 
   let samples = config.samples;
 
-  if (action.filter?.field === "dx") {
-  samples = samples.filter(
-    (s) => s.dx?.toLowerCase() === action.filter?.value?.toLowerCase()
+  if (action.filter) {
+  samples = samples.filter((sample) =>
+    action.filter!.every((filter) => {
+      const value = sample[filter.field as keyof Sample];
+
+      return (
+        String(value ?? "").toLowerCase() ===
+        filter.value.toLowerCase()
+      );
+    })
   );
 }
 
@@ -125,9 +132,14 @@ export default function Home() {
   const sample = samples[selectedIndex] ?? samples[0];
 
   const displayWidth = 400;
-  const scale = sample?.image_size
-    ? displayWidth / sample.image_size[0]
-    : 1;
+
+const scale = sample?.image_size
+  ? displayWidth / sample.image_size[0]
+  : 1;
+
+const displayHeight = sample?.image_size
+  ? sample.image_size[1] * scale
+  : 400;
 
   const selectDatasetManually = (key: string) => {
     const d = DATASETS[key];
@@ -214,8 +226,11 @@ export default function Home() {
           {sample && (
             <div
               className="relative inline-block"
-              style={{ width: displayWidth }}
-            >
+              style={{
+             width: displayWidth,
+              height: displayHeight,
+             }}
+              >
               <img
                 src={`${config.imagePath}/${sample.image_file || `${sample.image_id}.jpg`}`}
                 alt={sample.image_id}
@@ -235,7 +250,7 @@ export default function Home() {
                       top:
                         (sample.heatmap.cy -
                           sample.heatmap.r) *
-                        displayWidth,
+                        displayHeight,
                       width:
                         sample.heatmap.r *
                         2 *
@@ -243,13 +258,13 @@ export default function Home() {
                       height:
                         sample.heatmap.r *
                         2 *
-                        displayWidth,
+                        displayHeight,
                       background:
                         "radial-gradient(circle, rgba(242,174,64,0.55) 0%, rgba(242,174,64,0.15) 60%, transparent 100%)",
                     }}
                   />
                 )}
-
+                
               {action.visualizations.bbox &&
                 sample.bounding_boxes?.map(
                   (box, i) => (
