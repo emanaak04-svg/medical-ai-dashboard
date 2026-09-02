@@ -6,14 +6,11 @@ which dataset, filters, and visualizations to show, including a 3D model
 that highlights and zooms into the relevant body part.
 
 ## How it works
-You type something in chat
-↓
-Gemini turns it into structured JSON
-↓
-{ dataset, task, bodyRegion, filter, visualizations }
-↓
-Dashboard updates the image, bounding box, heatmap, JSON panel, and 3D model
 
+You type something in chat, Gemini turns it into structured JSON like
+`{ dataset, task, bodyRegion, filter, visualizations }`, and the dashboard
+updates the image, bounding box, heatmap, JSON panel, and 3D model based on
+that.
 
 ## Built with
 
